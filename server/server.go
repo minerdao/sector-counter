@@ -32,7 +32,7 @@ func (s *Service) GetSectorID(ctx context.Context, req *pb.SectorIDRequest) (*pb
 
 // WriteSectorID 实现 WriteSectorID 方法
 func (s *Service) WriteSectorID() {
-	f, err := os.Open(s.SCFilePath)
+	f, err := os.OpenFile(s.SCFilePath, os.O_WRONLY|os.O_TRUNC, 0600)
 	if err != nil {
 		log.Println(err)
 	}
