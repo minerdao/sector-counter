@@ -11,7 +11,7 @@ import (
 )
 
 func main() {
-	os.Setenv("SC_SERVER", "127.0.0.1:1357")
+	os.Setenv("SC_LISTEN", "127.0.0.1:1357")
 	// os.Setenv("SECTOR_COUNTER", "0")
 	go server.Run()
 	time.Sleep(time.Second * 6)
