@@ -7,6 +7,7 @@ import (
 	"net"
 	"os"
 	"strconv"
+	"strings"
 	"sync"
 
 	pb "github.com/moran666666/sector-counter/proto"
@@ -64,7 +65,8 @@ func readFileSid(filePath string) (uint64, error) {
 		return 0, err
 	}
 
-	sectorID, err := strconv.ParseUint(string(byteID), 0, 64) // 将字符型数字转化为uint64类型
+	stringID := strings.Replace(string(byteID), "\n", "", -1)   // 将最后的\n去掉
+	sectorID, err := strconv.ParseUint(string(stringID), 0, 64) // 将字符型数字转化为uint64类型
 	if err != nil {
 		return 0, err
 	}
